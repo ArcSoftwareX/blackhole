@@ -1,0 +1,25 @@
+{
+  "name": "blackhole",
+  "version": "0.0.1",
+  "description": "A client-side framework. Currently in developement.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arcsoftwarex/blackhole.git"
+  },
+  "keywords": [
+    "Framework"
+  ],
+  "author": "Igor Vladimirov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arcsoftwarex/blackhole/issues"
+  },
+  "homepage": "https://github.com/arcsoftwarex/blackhole#readme",
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  }
+}
