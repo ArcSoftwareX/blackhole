@@ -1,14 +1,11 @@
 import { is } from "./is"
+import type { VNode, Props } from "./types"
 import { changed, parseNode } from "./utils"
 
 export let oldTree: VNode = { nodeName: '', attrs: {}, children: [] }
 let rootNode: Node | null = null
 
-export function render(rootId: string, node: VNode) {
-    const root = document.getElementById(rootId)
-
-    if (!root) throw new Error(`Cannot find root element by id: ${rootId}`)
-
+export function render(root: HTMLElement, node: VNode) {
     oldTree.attrs = { ...node.attrs }
     oldTree.children = [...node.children]
     oldTree.nodeName = node.nodeName
@@ -17,20 +14,9 @@ export function render(rootId: string, node: VNode) {
     root.replaceChildren(parseNode(node))
 }
 
-export type VNode = { nodeName: string | ((...props: any[]) => VNode), attrs: Props, children: (VNode | string)[] }
-type Props = { [key: string]: any }
-
-export function h(nodeName: string, attrs: Props, ...children: (VNode | string)[]): VNode {
-    return { nodeName, attrs, children }
-}
-
-export function hf(...children: any[]) {
-    return children
-}
-
 export const renderNode = (vnode: VNode | string): Node => {
     if (!is.vnode(vnode)) return document.createTextNode(vnode);
-    if (typeof vnode.nodeName === 'function') return renderNode(vnode.nodeName(vnode.attrs))
+    if (typeof vnode.nodeName === 'function') return renderNode(vnode.nodeName({ ...vnode.attrs, children: vnode.children }))
 
     const el = document.createElement(vnode.nodeName)
 

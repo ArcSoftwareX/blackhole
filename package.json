@@ -1,10 +1,11 @@
 {
-  "name": "blackhole",
+  "name": "blackhole-web",
   "version": "0.0.1",
   "description": "A client-side framework. Currently in developement.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "build:pack": "tsc && npm pack"
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,6 @@
 import { is } from "./is"
-import { VNode, renderNode } from "./vdom"
+import type { VNode } from "./types"
+import { renderNode } from "./vdom"
 
 export const getEventName = (name: string): string => {
     return name.substring(2, name.length).toLowerCase()

@@ -1,1 +1,5 @@
-export { h, hf, patch } from './framework/vdom'
+export { mount } from './framework/mounter'
+export { patch } from './framework/vdom'
+export { Link } from './framework/components'
+export {  } from './framework/index'
+export type { Routes, RouteData, Props, VNode } from './framework/types'
